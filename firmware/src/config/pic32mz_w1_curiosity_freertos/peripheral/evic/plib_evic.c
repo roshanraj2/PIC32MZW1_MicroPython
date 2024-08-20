@@ -42,13 +42,14 @@
 
 #include "device.h"
 #include "plib_evic.h"
+#include "interrupts.h"
 
 
-EXT_INT_PIN_CALLBACK_OBJ extInt0CbObj;
-EXT_INT_PIN_CALLBACK_OBJ extInt1CbObj;
-EXT_INT_PIN_CALLBACK_OBJ extInt2CbObj;
-EXT_INT_PIN_CALLBACK_OBJ extInt3CbObj;
-EXT_INT_PIN_CALLBACK_OBJ extInt4CbObj;
+volatile static EXT_INT_PIN_CALLBACK_OBJ extInt0CbObj;
+volatile static EXT_INT_PIN_CALLBACK_OBJ extInt1CbObj;
+volatile static EXT_INT_PIN_CALLBACK_OBJ extInt2CbObj;
+volatile static EXT_INT_PIN_CALLBACK_OBJ extInt3CbObj;
+volatile static EXT_INT_PIN_CALLBACK_OBJ extInt4CbObj;
 // *****************************************************************************
 // *****************************************************************************
 // Section: IRQ Implementation
@@ -60,34 +61,34 @@ void EVIC_Initialize( void )
     INTCONSET = _INTCON_MVEC_MASK;
 
     /* Set up priority and subpriority of enabled interrupts */
-    IPC0SET = 0x4 | 0x0;  /* CORE_TIMER:  Priority 1 / Subpriority 0 */
-    IPC0SET = 0x4000000 | 0x0;  /* EXTERNAL_0:  Priority 1 / Subpriority 0 */
-    IPC2SET = 0x4 | 0x0;  /* EXTERNAL_1:  Priority 1 / Subpriority 0 */
-    IPC3SET = 0x400 | 0x0;  /* EXTERNAL_2:  Priority 1 / Subpriority 0 */
-    IPC3SET = 0x40000 | 0x0;  /* TIMER_3:  Priority 1 / Subpriority 0 */
-    IPC4SET = 0x40000 | 0x0;  /* EXTERNAL_3:  Priority 1 / Subpriority 0 */
-    IPC5SET = 0x4000000 | 0x0;  /* EXTERNAL_4:  Priority 1 / Subpriority 0 */
-    IPC6SET = 0x4 | 0x0;  /* TIMER_5:  Priority 1 / Subpriority 0 */
-    IPC7SET = 0x40000 | 0x0;  /* FLASH_CONTROL:  Priority 1 / Subpriority 0 */
-    IPC8SET = 0x40000 | 0x0;  /* USB:  Priority 1 / Subpriority 0 */
-    IPC9SET = 0x4 | 0x0;  /* SPI1_RX:  Priority 1 / Subpriority 0 */
-    IPC9SET = 0x400 | 0x0;  /* SPI1_TX:  Priority 1 / Subpriority 0 */
-    IPC9SET = 0x40000 | 0x0;  /* UART1_FAULT:  Priority 1 / Subpriority 0 */
-    IPC9SET = 0x4000000 | 0x0;  /* UART1_RX:  Priority 1 / Subpriority 0 */
-    IPC10SET = 0x4 | 0x0;  /* UART1_TX:  Priority 1 / Subpriority 0 */
-    IPC10SET = 0x400 | 0x0;  /* I2C1_BUS:  Priority 1 / Subpriority 0 */
-    IPC10SET = 0x4000000 | 0x0;  /* I2C1_MASTER:  Priority 1 / Subpriority 0 */
-    IPC13SET = 0x40000 | 0x0;  /* SPI2_RX:  Priority 1 / Subpriority 0 */
-    IPC13SET = 0x4000000 | 0x0;  /* SPI2_TX:  Priority 1 / Subpriority 0 */
-    IPC14SET = 0x4 | 0x0;  /* UART2_FAULT:  Priority 1 / Subpriority 0 */
-    IPC14SET = 0x400 | 0x0;  /* UART2_RX:  Priority 1 / Subpriority 0 */
-    IPC14SET = 0x40000 | 0x0;  /* UART2_TX:  Priority 1 / Subpriority 0 */
-    IPC20SET = 0x4 | 0x0;  /* TIMER_7:  Priority 1 / Subpriority 0 */
-    IPC20SET = 0x4000000 | 0x0;  /* RFSMC:  Priority 1 / Subpriority 0 */
-    IPC21SET = 0x4 | 0x0;  /* RFMAC:  Priority 1 / Subpriority 0 */
-    IPC21SET = 0x40000 | 0x0;  /* RFTM0:  Priority 1 / Subpriority 0 */
-    IPC41SET = 0x40000 | 0x0;  /* CRYPTO1:  Priority 1 / Subpriority 0 */
-    IPC41SET = 0x4000000 | 0x0;  /* CRYPTO1_FAULT:  Priority 1 / Subpriority 0 */
+    IPC0SET = 0x4U | 0x0U;  /* CORE_TIMER:  Priority 1 / Subpriority 0 */
+    IPC0SET = 0x4000000U | 0x0U;  /* EXTERNAL_0:  Priority 1 / Subpriority 0 */
+    IPC2SET = 0x4U | 0x0U;  /* EXTERNAL_1:  Priority 1 / Subpriority 0 */
+    IPC3SET = 0x400U | 0x0U;  /* EXTERNAL_2:  Priority 1 / Subpriority 0 */
+    IPC3SET = 0x40000U | 0x0U;  /* TIMER_3:  Priority 1 / Subpriority 0 */
+    IPC4SET = 0x40000U | 0x0U;  /* EXTERNAL_3:  Priority 1 / Subpriority 0 */
+    IPC5SET = 0x4000000U | 0x0U;  /* EXTERNAL_4:  Priority 1 / Subpriority 0 */
+    IPC6SET = 0x4U | 0x0U;  /* TIMER_5:  Priority 1 / Subpriority 0 */
+    IPC7SET = 0x40000U | 0x0U;  /* FLASH_CONTROL:  Priority 1 / Subpriority 0 */
+    IPC8SET = 0x40000U | 0x0U;  /* USB:  Priority 1 / Subpriority 0 */
+    IPC9SET = 0x4U | 0x0U;  /* SPI1_RX:  Priority 1 / Subpriority 0 */
+    IPC9SET = 0x400U | 0x0U;  /* SPI1_TX:  Priority 1 / Subpriority 0 */
+    IPC9SET = 0x40000U | 0x0U;  /* UART1_FAULT:  Priority 1 / Subpriority 0 */
+    IPC9SET = 0x4000000U | 0x0U;  /* UART1_RX:  Priority 1 / Subpriority 0 */
+    IPC10SET = 0x4U | 0x0U;  /* UART1_TX:  Priority 1 / Subpriority 0 */
+    IPC10SET = 0x400U | 0x0U;  /* I2C1_BUS:  Priority 1 / Subpriority 0 */
+    IPC10SET = 0x4000000U | 0x0U;  /* I2C1_MASTER:  Priority 1 / Subpriority 0 */
+    IPC13SET = 0x40000U | 0x0U;  /* SPI2_RX:  Priority 1 / Subpriority 0 */
+    IPC13SET = 0x4000000U | 0x0U;  /* SPI2_TX:  Priority 1 / Subpriority 0 */
+    IPC14SET = 0x4U | 0x0U;  /* UART2_FAULT:  Priority 1 / Subpriority 0 */
+    IPC14SET = 0x400U | 0x0U;  /* UART2_RX:  Priority 1 / Subpriority 0 */
+    IPC14SET = 0x40000U | 0x0U;  /* UART2_TX:  Priority 1 / Subpriority 0 */
+    IPC20SET = 0x4U | 0x0U;  /* TIMER_7:  Priority 1 / Subpriority 0 */
+    IPC20SET = 0x4000000U | 0x0U;  /* RFSMC:  Priority 1 / Subpriority 0 */
+    IPC21SET = 0x4U | 0x0U;  /* RFMAC:  Priority 1 / Subpriority 0 */
+    IPC21SET = 0x40000U | 0x0U;  /* RFTM0:  Priority 1 / Subpriority 0 */
+    IPC41SET = 0x40000U | 0x0U;  /* CRYPTO1:  Priority 1 / Subpriority 0 */
+    IPC41SET = 0x4000000U | 0x0U;  /* CRYPTO1_FAULT:  Priority 1 / Subpriority 0 */
 
     /* Initialize External interrupt 0 callback object */
     extInt0CbObj.callback = NULL;
@@ -104,53 +105,53 @@ void EVIC_Initialize( void )
 
 void EVIC_SourceEnable( INT_SOURCE source )
 {
-    volatile uint32_t *IECx = (volatile uint32_t *) (&IEC0 + ((0x10 * (source / 32)) / 4));
-    volatile uint32_t *IECxSET = (volatile uint32_t *)(IECx + 2);
+    volatile uint32_t *IECx = (volatile uint32_t *) (&IEC0 + ((0x10U * (source / 32U)) / 4U));
+    volatile uint32_t *IECxSET = (volatile uint32_t *)(IECx + 2U);
 
-    *IECxSET = 1 << (source & 0x1f);
+    *IECxSET = 1UL << (source & 0x1fU);
 }
 
 void EVIC_SourceDisable( INT_SOURCE source )
 {
-    volatile uint32_t *IECx = (volatile uint32_t *) (&IEC0 + ((0x10 * (source / 32)) / 4));
-    volatile uint32_t *IECxCLR = (volatile uint32_t *)(IECx + 1);
+    volatile uint32_t *IECx = (volatile uint32_t *) (&IEC0 + ((0x10U * (source / 32U)) / 4U));
+    volatile uint32_t *IECxCLR = (volatile uint32_t *)(IECx + 1U);
 
-    *IECxCLR = 1 << (source & 0x1f);
+    *IECxCLR = 1UL << (source & 0x1fU);
 }
 
 bool EVIC_SourceIsEnabled( INT_SOURCE source )
 {
-    volatile uint32_t *IECx = (volatile uint32_t *) (&IEC0 + ((0x10 * (source / 32)) / 4));
+    volatile uint32_t *IECx = (volatile uint32_t *) (&IEC0 + ((0x10U * (source / 32U)) / 4U));
 
-    return (bool)((*IECx >> (source & 0x1f)) & 0x01);
+    return (((*IECx >> (source & 0x1fU)) & 0x01U) != 0U);
 }
 
 bool EVIC_SourceStatusGet( INT_SOURCE source )
 {
-    volatile uint32_t *IFSx = (volatile uint32_t *)(&IFS0 + ((0x10 * (source / 32)) / 4));
+    volatile uint32_t *IFSx = (volatile uint32_t *)(&IFS0 + ((0x10U * (source / 32U)) / 4U));
 
-    return (bool)((*IFSx >> (source & 0x1f)) & 0x1);
+    return (((*IFSx >> (source & 0x1fU)) & 0x1U) != 0U);
 }
 
 void EVIC_SourceStatusSet( INT_SOURCE source )
 {
-    volatile uint32_t *IFSx = (volatile uint32_t *) (&IFS0 + ((0x10 * (source / 32)) / 4));
-    volatile uint32_t *IFSxSET = (volatile uint32_t *)(IFSx + 2);
+    volatile uint32_t *IFSx = (volatile uint32_t *) (&IFS0 + ((0x10U * (source / 32U)) / 4U));
+    volatile uint32_t *IFSxSET = (volatile uint32_t *)(IFSx + 2U);
 
-    *IFSxSET = 1 << (source & 0x1f);
+    *IFSxSET = 1UL << (source & 0x1fU);
 }
 
 void EVIC_SourceStatusClear( INT_SOURCE source )
 {
-    volatile uint32_t *IFSx = (volatile uint32_t *) (&IFS0 + ((0x10 * (source / 32)) / 4));
-    volatile uint32_t *IFSxCLR = (volatile uint32_t *)(IFSx + 1);
+    volatile uint32_t *IFSx = (volatile uint32_t *) (&IFS0 + ((0x10U * (source / 32U)) / 4U));
+    volatile uint32_t *IFSxCLR = (volatile uint32_t *)(IFSx + 1U);
 
-    *IFSxCLR = 1 << (source & 0x1f);
+    *IFSxCLR = 1UL << (source & 0x1fU);
 }
 
 void EVIC_INT_Enable( void )
 {
-    __builtin_enable_interrupts();
+   (void) __builtin_enable_interrupts();
 }
 
 bool EVIC_INT_Disable( void )
@@ -161,7 +162,7 @@ bool EVIC_INT_Disable( void )
     processorStatus = ( uint32_t )__builtin_disable_interrupts();
 
     /* return the interrupt status */
-    return (bool)(processorStatus & 0x01);
+    return ((processorStatus & 0x01U) != 0U);
 }
 
 void EVIC_INT_Restore( bool state )
@@ -169,18 +170,41 @@ void EVIC_INT_Restore( bool state )
     if (state)
     {
         /* restore the state of CP0 Status register before the disable occurred */
-        __builtin_enable_interrupts();
+       (void) __builtin_enable_interrupts();
     }
+}
+
+bool EVIC_INT_SourceDisable( INT_SOURCE source )
+{
+    bool processorStatus;
+    bool intSrcStatus;
+
+    processorStatus = EVIC_INT_Disable();
+    intSrcStatus = (EVIC_SourceIsEnabled(source) != 0U);
+    EVIC_SourceDisable( source );
+    EVIC_INT_Restore( processorStatus );
+
+    /* return the source status */
+    return intSrcStatus;
+}
+
+void EVIC_INT_SourceRestore( INT_SOURCE source, bool status )
+{
+    if( status ) {
+       EVIC_SourceEnable( source );
+    }
+
+    return;
 }
 
 void EVIC_ExternalInterruptEnable( EXTERNAL_INT_PIN extIntPin )
 {
-    IEC0SET = extIntPin;
+    IEC0SET = (uint32_t)extIntPin;
 }
 
 void EVIC_ExternalInterruptDisable( EXTERNAL_INT_PIN extIntPin )
 {
-    IEC0CLR = extIntPin;
+    IEC0CLR = (uint32_t)extIntPin;
 }
 
 bool EVIC_ExternalInterruptCallbackRegister(
@@ -229,15 +253,18 @@ bool EVIC_ExternalInterruptCallbackRegister(
     Interrupt Handler for External Interrupt pin 0.
 
   Remarks:
-	It is an internal function called from ISR, user should not call it directly.
+    It is an internal function called from ISR, user should not call it directly.
 */
-void EXTERNAL_0_InterruptHandler(void)
+void __attribute__((used)) EXTERNAL_0_InterruptHandler(void)
 {
+    uintptr_t context_var;
+
     IFS0CLR = _IFS0_INT0IF_MASK;
 
     if(extInt0CbObj.callback != NULL)
     {
-        extInt0CbObj.callback (EXTERNAL_INT_0, extInt0CbObj.context);
+        context_var = extInt0CbObj.context;
+        extInt0CbObj.callback (EXTERNAL_INT_0, context_var);
     }
 }
 
@@ -250,15 +277,18 @@ void EXTERNAL_0_InterruptHandler(void)
     Interrupt Handler for External Interrupt pin 1.
 
   Remarks:
-	It is an internal function called from ISR, user should not call it directly.
+    It is an internal function called from ISR, user should not call it directly.
 */
-void EXTERNAL_1_InterruptHandler(void)
+void __attribute__((used)) EXTERNAL_1_InterruptHandler(void)
 {
+    uintptr_t context_var;
+
     IFS0CLR = _IFS0_INT1IF_MASK;
 
     if(extInt1CbObj.callback != NULL)
     {
-        extInt1CbObj.callback (EXTERNAL_INT_1, extInt1CbObj.context);
+        context_var = extInt1CbObj.context;
+        extInt1CbObj.callback (EXTERNAL_INT_1, context_var);
     }
 }
 
@@ -271,15 +301,18 @@ void EXTERNAL_1_InterruptHandler(void)
     Interrupt Handler for External Interrupt pin 2.
 
   Remarks:
-	It is an internal function called from ISR, user should not call it directly.
+    It is an internal function called from ISR, user should not call it directly.
 */
-void EXTERNAL_2_InterruptHandler(void)
+void __attribute__((used)) EXTERNAL_2_InterruptHandler(void)
 {
+    uintptr_t context_var;
+
     IFS0CLR = _IFS0_INT2IF_MASK;
 
     if(extInt2CbObj.callback != NULL)
     {
-        extInt2CbObj.callback (EXTERNAL_INT_2, extInt2CbObj.context);
+        context_var = extInt2CbObj.context;
+        extInt2CbObj.callback (EXTERNAL_INT_2, context_var);
     }
 }
 
@@ -292,15 +325,18 @@ void EXTERNAL_2_InterruptHandler(void)
     Interrupt Handler for External Interrupt pin 3.
 
   Remarks:
-	It is an internal function called from ISR, user should not call it directly.
+    It is an internal function called from ISR, user should not call it directly.
 */
-void EXTERNAL_3_InterruptHandler(void)
+void __attribute__((used)) EXTERNAL_3_InterruptHandler(void)
 {
+    uintptr_t context_var;
+
     IFS0CLR = _IFS0_INT3IF_MASK;
 
     if(extInt3CbObj.callback != NULL)
     {
-        extInt3CbObj.callback (EXTERNAL_INT_3, extInt3CbObj.context);
+        context_var = extInt3CbObj.context;
+        extInt3CbObj.callback (EXTERNAL_INT_3, context_var);
     }
 }
 
@@ -313,15 +349,18 @@ void EXTERNAL_3_InterruptHandler(void)
     Interrupt Handler for External Interrupt pin 4.
 
   Remarks:
-	It is an internal function called from ISR, user should not call it directly.
+    It is an internal function called from ISR, user should not call it directly.
 */
-void EXTERNAL_4_InterruptHandler(void)
+void __attribute__((used)) EXTERNAL_4_InterruptHandler(void)
 {
+    uintptr_t context_var;
+
     IFS0CLR = _IFS0_INT4IF_MASK;
 
     if(extInt4CbObj.callback != NULL)
     {
-        extInt4CbObj.callback (EXTERNAL_INT_4, extInt4CbObj.context);
+        context_var = extInt4CbObj.context;
+        extInt4CbObj.callback (EXTERNAL_INT_4, context_var);
     }
 }
 

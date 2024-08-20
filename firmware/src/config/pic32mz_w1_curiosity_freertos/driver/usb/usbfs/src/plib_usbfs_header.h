@@ -24,15 +24,16 @@
 /* Created by plibgen $Revision: 1.31 $ */
 
 
-#ifndef _PLIB_USBFS_H
-#define _PLIB_USBFS_H
+#ifndef PLIB_USBFS_H
+#define PLIB_USBFS_H
 
 /* Section 1 - Enumerate instances, define constants, VREGs */
 
 #include <xc.h>
 #include <stdbool.h>
 
-
+/* MISRA C-2012 Rule 5.5 ,Rule 21.1 and Rule 21.2. Deviation record ID -  
+   H3_USB_MISRAC_2012_R_5_5_DR_1, H3_USB_MISRAC_2012_R_21_1_DR_1 and H3_USB_MISRAC_2012_R_21_2_DR_1 */
 
 /* Default definition used for all API dispatch functions */
 #ifndef PLIB_INLINE_API
@@ -52,12 +53,15 @@
     #define PLIB_ASSERT(a,b)  
 #endif 
 
-typedef enum {
+#if defined(__32MX420F032H__) || defined(__32MX440F128H__) ||  defined(__32MX440F256H__) || defined(__32MX440F512H__) || defined(__32MX440F128L__) || defined(__32MX460F256L__) || defined(__32MX460F512L__)
 
-    USB_ID_1 = _USB_BASE_ADDRESS,
-    USB_NUMBER_OF_MODULES = 1
-	
-} USB_MODULE_ID;
+    #define USB_BUSY_FLAG_DOES_NOT_EXIST   
+#endif
+
+typedef uint32_t USB_MODULE_ID;
+#define USB_ID_1 _USB_BASE_ADDRESS
+#define  USB_NUMBER_OF_MODULES 1U
+
 
 typedef enum {
 
@@ -107,7 +111,6 @@ typedef enum {
 #include "driver/usb/usbfs/src/templates/usb_OTG_VbusDischarge_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_ActivityPending_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_SleepEntryGuard_Default.h"
-#include "driver/usb/usbfs/src/templates/usb_ModuleBusy_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_Suspend_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_ModulePower_32Bit16Bit.h"
 #include "driver/usb/usbfs/src/templates/usb_GEN_InterruptStatus_Default.h"
@@ -137,7 +140,6 @@ typedef enum {
 #include "driver/usb/usbfs/src/templates/usb_BDTBaseAddress_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_EyePattern_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_StopInIdle_Default.h"
-#include "driver/usb/usbfs/src/templates/usb_AutomaticSuspend_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_PingPongMode_Unsupported.h"
 #include "driver/usb/usbfs/src/templates/usb_UOEMonitor_Unsupported.h"
 #include "driver/usb/usbfs/src/templates/usb_OnChipPullup_Unsupported.h"
@@ -148,6 +150,11 @@ typedef enum {
 #include "driver/usb/usbfs/src/templates/usb_EPnTxRx_Default.h"
 #include "driver/usb/usbfs/src/templates/usb_EPnRxEnableEnhanced_PIC32.h"
 #include "driver/usb/usbfs/src/templates/usb_BDTFunctions_PIC32.h"
+#ifndef  USB_BUSY_FLAG_DOES_NOT_EXIST
+    #include "driver/usb/usbfs/src/templates/usb_ModuleBusy_Default.h"
+    #include "driver/usb/usbfs/src/templates/usb_AutomaticSuspend_Default.h"
+#endif
+
 
 /* Section 3 - PLIB dispatch function definitions */
 
@@ -320,16 +327,32 @@ PLIB_INLINE_API bool PLIB_USB_ExistsSleepEntryGuard(USB_MODULE_ID index)
 {
      return USB_ExistsSleepEntryGuard_Default(index);
 }
+#ifndef  USB_BUSY_FLAG_DOES_NOT_EXIST
+    PLIB_INLINE_API bool PLIB_USB_ModuleIsBusy(USB_MODULE_ID index)
+    {
+         return USB_ModuleIsBusy_Default(index);
+    }
 
-PLIB_INLINE_API bool PLIB_USB_ModuleIsBusy(USB_MODULE_ID index)
-{
-     return USB_ModuleIsBusy_Default(index);
-}
+    PLIB_INLINE_API bool PLIB_USB_ExistsModuleBusy(USB_MODULE_ID index)
+    {
+         return USB_ExistsModuleBusy_Default(index);
+    }
 
-PLIB_INLINE_API bool PLIB_USB_ExistsModuleBusy(USB_MODULE_ID index)
-{
-     return USB_ExistsModuleBusy_Default(index);
-}
+    PLIB_INLINE_API void PLIB_USB_AutoSuspendDisable(USB_MODULE_ID index)
+    {
+         USB_AutoSuspendDisable_Default(index);
+    }
+
+    PLIB_INLINE_API void PLIB_USB_AutoSuspendEnable(USB_MODULE_ID index)
+    {
+         USB_AutoSuspendEnable_Default(index);
+    }
+
+    PLIB_INLINE_API bool PLIB_USB_ExistsAutomaticSuspend(USB_MODULE_ID index)
+    {
+         return USB_ExistsAutomaticSuspend_Default(index);
+    }
+#endif
 
 PLIB_INLINE_API void PLIB_USB_SuspendEnable(USB_MODULE_ID index)
 {
@@ -761,20 +784,7 @@ PLIB_INLINE_API bool PLIB_USB_ExistsStopInIdle(USB_MODULE_ID index)
      return USB_ExistsStopInIdle_Default(index);
 }
 
-PLIB_INLINE_API void PLIB_USB_AutoSuspendDisable(USB_MODULE_ID index)
-{
-     USB_AutoSuspendDisable_Default(index);
-}
 
-PLIB_INLINE_API void PLIB_USB_AutoSuspendEnable(USB_MODULE_ID index)
-{
-     USB_AutoSuspendEnable_Default(index);
-}
-
-PLIB_INLINE_API bool PLIB_USB_ExistsAutomaticSuspend(USB_MODULE_ID index)
-{
-     return USB_ExistsAutomaticSuspend_Default(index);
-}
 
 PLIB_INLINE_API void _PLIB_UNSUPPORTED PLIB_USB_PingPongModeSelect(USB_MODULE_ID index, USB_PING_PONG_MODE ppConfig)
 {
@@ -1090,5 +1100,7 @@ PLIB_INLINE_API bool PLIB_USB_ExistsBDTFunctions(USB_MODULE_ID index)
 {
      return USB_ExistsBDTFunctions_PIC32(index);
 }
+
+/* MISRAC 2012 deviation block end */
 
 #endif

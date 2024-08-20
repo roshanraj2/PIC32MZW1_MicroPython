@@ -82,8 +82,8 @@
 #include "peripheral/tmr/plib_tmr6.h"
 #include "peripheral/uart/plib_uart3.h"
 #include "peripheral/adchs/plib_adchs.h"
-#include "peripheral/tmr/plib_tmr4.h"
 #include "peripheral/uart/plib_uart1.h"
+#include "peripheral/tmr/plib_tmr4.h"
 #include "peripheral/uart/plib_uart2.h"
 #include "peripheral/tmr/plib_tmr2.h"
 #include "driver/usb/usbfs/drv_usbfs.h"
@@ -105,9 +105,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "app_pic32mzw1.h"
-#include "app_usb_msd.h"
 
-//#define DEV_DEBUG
+
+
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -115,6 +115,12 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
+
+/* Device Information */
+#define DEVICE_NAME			 "PIC32MZ1025W104132"
+#define DEVICE_ARCH			 "MIPS"
+#define DEVICE_FAMILY		 "PIC32MZW"
+#define DEVICE_SERIES		 "PIC32MZW"
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 200000000
@@ -237,17 +243,19 @@ typedef struct
 
     SYS_MODULE_OBJ  ba414e;
 
-	SYS_MODULE_OBJ  usbDevObject0;
+    SYS_MODULE_OBJ  usbDevObject0;
 
     SYS_MODULE_OBJ  drvMemory0;
-	SYS_MODULE_OBJ  drvUSBFSObject;
+    SYS_MODULE_OBJ  drvUSBFSObject;
 
 
     SYS_MODULE_OBJ  tcpip;
     SYS_MODULE_OBJ  drvSST26;
     SYS_MODULE_OBJ  sysDebug;
 
+
     SYS_MODULE_OBJ  drvWifiPIC32MZW1;
+
     SYS_MODULE_OBJ  syswifi;
 
 } SYSTEM_OBJECTS;

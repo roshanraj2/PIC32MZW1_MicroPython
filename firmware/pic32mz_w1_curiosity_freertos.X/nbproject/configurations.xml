@@ -23,11 +23,13 @@
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/memory/src/drv_memory_local.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/memory/drv_memory.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/memory/drv_memory_definitions.h</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/memory/src/drv_memory_file_system.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f5" displayName="sst26" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/sst26/drv_sst26.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/sst26/src/drv_sst26_local.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/sst26/drv_sst26_definitions.h</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/sst26/src/drv_sst26_spi_interface.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="usb" projectFiles="true">
               <logicalFolder name="f1" displayName="usbfs" projectFiles="true">
@@ -176,6 +178,8 @@
                   <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/include/wdrv_pic32mzw_sta.h</itemPath>
                   <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/include/wdrv_pic32mzw_ps.h</itemPath>
                   <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/include/wdrv_pic32mzw_custie.h</itemPath>
+                  <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/include/drv_pic32mzw1_tls.h</itemPath>
+                  <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/include/wdrv_pic32mzw_ie.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
@@ -261,6 +265,8 @@
                 <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/src/lldp_tlv.h</itemPath>
                 <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/src/tcpip_mac_bridge_manager.h</itemPath>
                 <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/src/tcpip_mac_bridge_private.h</itemPath>
+                <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/src/dhcp_server_manager.h</itemPath>
+                <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/src/dhcp_server_private.h</itemPath>
               </logicalFolder>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/tcpip_common_ports.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/tcpip_mac.h</itemPath>
@@ -307,6 +313,7 @@
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/tcpip.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/tcpip_mac_bridge.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/tcpip_ethernet.h</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/library/tcpip/dhcp_server.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f6" displayName="net_pres" projectFiles="true">
@@ -474,6 +481,7 @@
           <itemPath>../src/config/pic32mz_w1_curiosity_freertos/FreeRTOSConfig.h</itemPath>
           <itemPath>../src/config/pic32mz_w1_curiosity_freertos/interrupts.h</itemPath>
           <itemPath>../src/config/pic32mz_w1_curiosity_freertos/device_cache.h</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/sys_tasks.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f4" displayName="FreeRTOS" projectFiles="true">
@@ -725,6 +733,177 @@
       <itemPath>../src/app_pic32mzw1.h</itemPath>
       <itemPath>../src/app_usb_msd.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <logicalFolder name="f2"
+                     displayName="pic32mz_w1_curiosity_freertos.mhc"
+                     projectFiles="true">
+        <logicalFolder name="f1" displayName="System_Configuration" projectFiles="true">
+          <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
+            <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/APPLICATION_LAYER.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipBerkeleyApi.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcps.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDnss.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/BASIC_CONFIGURATION.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipCmd.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpip_basic_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/DRIVER_LAYER.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/tcpip_driver_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/NETWORK_LAYER.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipArp.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmp.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv4.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpip_network_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f5" displayName="PRESENTATION_LAYER" projectFiles="true">
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/PRESENTATION_LAYER/net_Pres.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/PRESENTATION_LAYER/PRESENTATION_LAYER.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f6" displayName="TRANSPORT_LAYER" projectFiles="true">
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipTcp.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipUdp.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpip_transport_config.yml</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/TRANSPORT_LAYER.yml</itemPath>
+            </logicalFolder>
+            <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TCP_IP_STACK.yml</itemPath>
+          </logicalFolder>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/core_timer.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/drvWifiPic32mzw1.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/drv_ba414e.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/FreeRTOS.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/HarmonyCore.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/lib_crypto.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/lib_wolfcrypt.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/lib_wolfssl.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/nvm.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/System_Configuration.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_command.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_console.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_debug.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_time.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/tcpipNetConfig.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/tcpipSntp.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/tcpipStack.yml</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/uart1.yml</itemPath>
+        </logicalFolder>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/adchs.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/core.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/drv_memory.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/drv_sst26.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/drv_usbfs_v1.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/i2c1.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/project.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/spi1.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/spi2.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/stdio.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sysNetPic32mzw1.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sysWifiPic32mzw1.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sysWifiProvPic32mzw1.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sys_fs.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr1.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr2.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr3.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr4.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr5.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr6.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr7.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/uart2.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/uart3.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/usb_device.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/usb_device_msd.yml</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="pic32mz_w1_curiosity_qt7.mhc"
+                     projectFiles="true">
+        <logicalFolder name="f1" displayName="System_Configuration" projectFiles="true">
+          <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
+            <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/APPLICATION_LAYER.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcps.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDnss.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipSntp.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/BASIC_CONFIGURATION.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipCmd.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpip_basic_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/DRIVER_LAYER.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/tcpip_driver_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/NETWORK_LAYER.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipArp.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmp.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv4.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpip_network_config.yml</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f5" displayName="TRANSPORT_LAYER" projectFiles="true">
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipTcp.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipUdp.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpip_transport_config.yml</itemPath>
+              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/TRANSPORT_LAYER.yml</itemPath>
+            </logicalFolder>
+            <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TCP_IP_STACK.yml</itemPath>
+          </logicalFolder>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/core_timer.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/drvWifiPic32mzw1.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/drv_ba414e.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/HarmonyCore.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/lib_crypto.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/lib_wolfcrypt.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/netPres.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/nvm.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/System_Configuration.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_command.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_console.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_debug.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_time.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/tcpipNetConfig.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/tcpipStack.yml</itemPath>
+          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/uart1.yml</itemPath>
+        </logicalFolder>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/adchs.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/core.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/dfp.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/lib_qtouch.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/project.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/settings.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/stdio.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/sysNetPic32mzw1.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/sysWifiPic32mzw1.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/sysWifiProvPic32mzw1.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/tmr2.yml</itemPath>
+        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/uart3.yml</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="wolfcrypt" projectFiles="true">
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/evp.c</itemPath>
+      </logicalFolder>
+      <itemPath>Makefile</itemPath>
+      <itemPath>../src/config/pic32mz_w1_curiosity_freertos/harmony-manifest-success.yml</itemPath>
+      <itemPath>../src/config/pic32mz_w1_curiosity_freertos/harmony-manifest-failure.yml</itemPath>
+      <itemPath>micropython_pic32mz_w1.mc3</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -762,6 +941,7 @@
             </logicalFolder>
             <logicalFolder name="f5" displayName="sst26" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/sst26/src/drv_sst26.c</itemPath>
+              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/sst26/src/drv_sst26_spi_interface.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="usb" projectFiles="true">
               <logicalFolder name="f1" displayName="usbfs" projectFiles="true">
@@ -786,6 +966,8 @@
                 <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/wdrv_pic32mzw_sta.c</itemPath>
                 <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/wdrv_pic32mzw_ps.c</itemPath>
                 <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/wdrv_pic32mzw_custie.c</itemPath>
+                <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/wdrv_pic32mzw_ie.c</itemPath>
+                <itemPath>../src/config/pic32mz_w1_curiosity_freertos/driver/wifi/pic32mzw1/drv_pic32mzw1_tls.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
@@ -1347,176 +1529,6 @@
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/app_usb_msd.c</itemPath>
     </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <logicalFolder name="f2"
-                     displayName="pic32mz_w1_curiosity_freertos.mhc"
-                     projectFiles="true">
-        <logicalFolder name="f1" displayName="System_Configuration" projectFiles="true">
-          <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
-            <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/APPLICATION_LAYER.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipBerkeleyApi.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcps.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDnss.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/BASIC_CONFIGURATION.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipCmd.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpip_basic_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/DRIVER_LAYER.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/tcpip_driver_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/NETWORK_LAYER.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipArp.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmp.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv4.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpip_network_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f5" displayName="PRESENTATION_LAYER" projectFiles="true">
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/PRESENTATION_LAYER/net_Pres.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/PRESENTATION_LAYER/PRESENTATION_LAYER.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f6" displayName="TRANSPORT_LAYER" projectFiles="true">
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipTcp.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipUdp.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpip_transport_config.yml</itemPath>
-              <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/TRANSPORT_LAYER.yml</itemPath>
-            </logicalFolder>
-            <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/TCP_IP_STACK/TCP_IP_STACK.yml</itemPath>
-          </logicalFolder>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/core_timer.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/drvWifiPic32mzw1.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/drv_ba414e.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/FreeRTOS.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/HarmonyCore.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/lib_crypto.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/lib_wolfcrypt.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/lib_wolfssl.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/nvm.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/System_Configuration.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_command.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_console.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_debug.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/sys_time.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/tcpipNetConfig.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/tcpipSntp.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/tcpipStack.yml</itemPath>
-          <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/System_Configuration/uart1.yml</itemPath>
-        </logicalFolder>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/adchs.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/core.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/drv_memory.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/drv_sst26.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/drv_usbfs_v1.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/i2c1.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/project.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/spi1.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/spi2.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/stdio.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sysNetPic32mzw1.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sysWifiPic32mzw1.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sysWifiProvPic32mzw1.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/sys_fs.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr1.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr2.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr3.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr4.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr5.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr6.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/tmr7.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/uart2.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/uart3.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/usb_device.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity_freertos/pic32mz_w1_curiosity_freertos.mhc/usb_device_msd.yml</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f3"
-                     displayName="pic32mz_w1_curiosity_qt7.mhc"
-                     projectFiles="true">
-        <logicalFolder name="f1" displayName="System_Configuration" projectFiles="true">
-          <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
-            <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/APPLICATION_LAYER.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcps.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipDnss.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpipSntp.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/BASIC_CONFIGURATION.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipCmd.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/BASIC_CONFIGURATION/tcpip_basic_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/DRIVER_LAYER.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/DRIVER_LAYER/tcpip_driver_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/NETWORK_LAYER.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipArp.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmp.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv4.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/NETWORK_LAYER/tcpip_network_config.yml</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f5" displayName="TRANSPORT_LAYER" projectFiles="true">
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipTcp.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpipUdp.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/tcpip_transport_config.yml</itemPath>
-              <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TRANSPORT_LAYER/TRANSPORT_LAYER.yml</itemPath>
-            </logicalFolder>
-            <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/TCP_IP_STACK/TCP_IP_STACK.yml</itemPath>
-          </logicalFolder>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/core_timer.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/drvWifiPic32mzw1.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/drv_ba414e.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/HarmonyCore.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/lib_crypto.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/lib_wolfcrypt.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/netPres.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/nvm.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/System_Configuration.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_command.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_console.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_debug.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/sys_time.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/tcpipNetConfig.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/tcpipStack.yml</itemPath>
-          <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/System_Configuration/uart1.yml</itemPath>
-        </logicalFolder>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/adchs.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/core.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/dfp.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/lib_qtouch.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/project.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/settings.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/stdio.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/sysNetPic32mzw1.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/sysWifiPic32mzw1.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/sysWifiProvPic32mzw1.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/tmr2.yml</itemPath>
-        <itemPath>../../../wifi_touch_demo/firmware/src/config/pic32mz_w1_curiosity_qt7/pic32mz_w1_curiosity_qt7.mhc/uart3.yml</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f1" displayName="wolfcrypt" projectFiles="true">
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/evp.c</itemPath>
-      </logicalFolder>
-      <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/pic32mz_w1_curiosity_freertos/harmony-manifest-success.yml</itemPath>
-      <itemPath>../src/config/pic32mz_w1_curiosity_freertos/harmony-manifest-failure.yml</itemPath>
-    </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
@@ -1529,13 +1541,13 @@
         <targetDevice>PIC32MZ1025W104132</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pkob4hybrid</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.30</languageToolchainVersion>
+        <languageToolchainVersion>4.45</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.6.220"/>
+        <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.8.326"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -1927,6 +1939,7 @@
       <C32>
         <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value="-std=gnu99 -minterlink-compressed"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -1937,9 +1950,9 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="true"/>
         <property key="isolate-each-function" value="true"/>
-        <property key="make-warnings-into-errors" value="false"/>
+        <property key="make-warnings-into-errors" value="true"/>
         <property key="optimization-level" value="-O1"/>
-        <property key="place-data-into-section" value="false"/>
+        <property key="place-data-into-section" value="true"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
@@ -1958,6 +1971,7 @@
         <property key="additional-options-chop-files" value="false"/>
       </C32-AR>
       <C32-AS>
+        <property key="appendMe" value=""/>
         <property key="assembler-symbols" value=""/>
         <property key="enable-symbols" value="true"/>
         <property key="exclude-floating-point-library" value="false"/>
@@ -1987,6 +2001,7 @@
         <property key="additional-options-use-response-files" value="true"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -2003,7 +2018,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value="512"/>
+        <property key="heap-size" value="20000"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -2011,7 +2026,8 @@
         <property key="map-file" value="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"/>
         <property key="no-device-startup-code" value="true"/>
         <property key="no-startup-files" value="false"/>
-        <property key="oXC32ld-extra-opts" value="-mreserve=prog@0x100ff000:0x100fffff"/>
+        <property key="oXC32ld-extra-opts"
+                  value="-mreserve=prog@0x100FF000:0x100FFFFF;-mreserve=prog@0x100ff000:0x100fffff"/>
         <property key="optimization-level" value=""/>
         <property key="preprocessor-macros" value=""/>
         <property key="remove-unused-sections" value="true"/>
@@ -2026,6 +2042,7 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -2119,7 +2136,11 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -2159,6 +2180,7 @@
         <property key="programoptions.program.otpconfig" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.smart.program" value="When debugging only"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="programoptionsedbg.eraseb4program" value="true"/>
         <property key="ptgProgramImage" value="true"/>
@@ -2197,6 +2219,7 @@
         <property key="REFERENCE CLOCK 1" value="true"/>
         <property key="SPI/I2S 1" value="true"/>
         <property key="SPI/I2S 2" value="true"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
         <property key="TIMER1" value="true"/>
         <property key="TIMER2" value="true"/>
         <property key="TIMER3" value="true"/>
@@ -2220,7 +2243,11 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -2249,6 +2276,7 @@
         <property key="programoptions.program.otpconfig" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.smart.program" value="When debugging only"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="toolpack.updateoptions"
                   value="toolpack.updateoptions.uselatestoolpack"/>

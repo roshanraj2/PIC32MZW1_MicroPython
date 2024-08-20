@@ -52,21 +52,47 @@
 
 #include "configuration.h"
 #include "definitions.h"
+#include "sys_tasks.h"
 
-#include "py/compile.h"
-#include "py/runtime.h"
-#include "py/gc.h"
-#include "py/mphal.h"
-#include "py/mperrno.h"
-#include "shared/runtime/pyexec.h"
-#include "shared/readline/readline.h"
-#include "app_usb_msd.h"
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: RTOS "Tasks" Routine
 // *****************************************************************************
 // *****************************************************************************
+/* Handle for the APP_PIC32MZW1_Tasks. */
+TaskHandle_t xAPP_PIC32MZW1_Tasks;
+
+static void lAPP_PIC32MZW1_Tasks(  void *pvParameters  )
+{   
+    while(true)
+    {
+        APP_PIC32MZW1_Tasks();
+        vTaskDelay(10U / portTICK_PERIOD_MS);
+    }
+}
+
+
+void _NET_PRES_Tasks(  void *pvParameters  )
+{
+    while(1)
+    {
+        NET_PRES_Tasks(sysObj.netPres);
+        vTaskDelay(1 / portTICK_PERIOD_MS);
+    }
+}
+
+
+static void lSYS_FS_Tasks(  void *pvParameters  )
+{
+    while(true)
+    {
+        SYS_FS_Tasks();
+        vTaskDelay(10U / portTICK_PERIOD_MS);
+    }
+}
+
+
 
 void _DRV_BA414E_Tasks(  void *pvParameters  )
 {
@@ -76,78 +102,25 @@ void _DRV_BA414E_Tasks(  void *pvParameters  )
     }
 }
 
-/* Handle for the APP_PIC32MZW1_Tasks. */
-TaskHandle_t xAPP_PIC32MZW1_Tasks;
-
-void _APP_PIC32MZW1_Tasks(  void *pvParameters  )
-{   
-    while(1)
-    {
-        APP_PIC32MZW1_Tasks();
-        vTaskDelay(10 / portTICK_PERIOD_MS);
-    }
-}
-
-void _SYS_FS_Tasks(  void *pvParameters  )
+static void F_USB_DEVICE_Tasks(  void *pvParameters  )
 {
-    while(1)
+    while(true)
     {
-        SYS_FS_Tasks();
-        vTaskDelay(10 / portTICK_PERIOD_MS);
-    }
-}
-
-extern int g_msd_ready;
-void _MICROPYTHON_Tasks(  void *pvParameters  )
-{   
-    while (!APP_USB_MSD_Get_STATUS());
-    
-    pyexec_file_if_exists("main.py");
-    
-    while(1)
-    {
-            if (pyexec_mode_kind == PYEXEC_MODE_RAW_REPL) {
-                if (pyexec_raw_repl() != 0) {
-                    break;
-                }
-            } else {
-                if (pyexec_friendly_repl() != 0) {
-                    break;
-                }
-            }
-
-        //vTaskDelay(10 / portTICK_PERIOD_MS);
-    }
-}
-
-void _USB_DEVICE_Tasks(  void *pvParameters  )
-{
-    while(1)
-    {
-				 /* USB Device layer tasks routine */
+                /* USB Device layer tasks routine */
         USB_DEVICE_Tasks(sysObj.usbDevObject0);
-        vTaskDelay(10 / portTICK_PERIOD_MS);
+        vTaskDelay(10U / portTICK_PERIOD_MS);
     }
 }
 
-void _DRV_MEMORY_0_Tasks(  void *pvParameters  )
+static void lDRV_MEMORY_0_Tasks(  void *pvParameters  )
 {
-    while(1)
+    while(true)
     {
         DRV_MEMORY_Tasks(sysObj.drvMemory0);
         vTaskDelay(DRV_MEMORY_RTOS_DELAY_IDX0 / portTICK_PERIOD_MS);
     }
 }
 
-void _DRV_USBFS_Tasks(  void *pvParameters  )
-{
-    while(1)
-    {
-				 /* USB FS Driver Task Routine */
-        DRV_USBFS_Tasks(sysObj.drvUSBFSObject);
-        vTaskDelay(10 / portTICK_PERIOD_MS);
-    }
-}
 
 
 void _TCPIP_STACK_Task(  void *pvParameters  )
@@ -159,7 +132,8 @@ void _TCPIP_STACK_Task(  void *pvParameters  )
     }
 }
 
-void _SYS_CMD_Tasks(  void *pvParameters  )
+TaskHandle_t xSYS_CMD_Tasks;
+void lSYS_CMD_Tasks(  void *pvParameters  )
 {
     while(1)
     {
@@ -169,15 +143,6 @@ void _SYS_CMD_Tasks(  void *pvParameters  )
 }
 
 
-
-void _NET_PRES_Tasks(  void *pvParameters  )
-{
-    while(1)
-    {
-        NET_PRES_Tasks(sysObj.netPres);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-    }
-}
 
 static void _WDRV_PIC32MZW1_Tasks(  void *pvParameters  )
 {
@@ -200,23 +165,12 @@ void _SYS_WIFI_Task(  void *pvParameters  )
 {
     while(1)
     {
-        //SYS_CONSOLE_PRINT("xPortGetMinimumEverFreeHeapSize = %d\r\n", xPortGetMinimumEverFreeHeapSize());
         SYS_WIFI_Tasks(sysObj.syswifi);
         vTaskDelay(4 / portTICK_PERIOD_MS);
     }
 }
 
-/* Handle for the APP_USB_MSD_Tasks. */
-TaskHandle_t xAPP_USB_MSD_Tasks;
 
-void _APP_USB_MSD_Tasks(  void *pvParameters  )
-{   
-    while(1)
-    {
-        APP_USB_MSD_Tasks();
-        vTaskDelay(10 / portTICK_PERIOD_MS);
-    }
-}
 
 
 // *****************************************************************************
@@ -236,7 +190,8 @@ void SYS_Tasks ( void )
 {
     /* Maintain system services */
     
-    xTaskCreate( _SYS_FS_Tasks,
+
+    (void) xTaskCreate( lSYS_FS_Tasks,
         "SYS_FS_TASKS",
         SYS_FS_STACK_SIZE,
         (void*)NULL,
@@ -244,21 +199,20 @@ void SYS_Tasks ( void )
         (TaskHandle_t*)NULL
     );
 
-#if 0
-    xTaskCreate( _SYS_CMD_Tasks,
+
+    (void) xTaskCreate( lSYS_CMD_Tasks,
         "SYS_CMD_TASKS",
         SYS_CMD_RTOS_STACK_SIZE,
         (void*)NULL,
         SYS_CMD_RTOS_TASK_PRIORITY,
-        (TaskHandle_t*)NULL
+        &xSYS_CMD_Tasks
     );
-#endif
 
 
 
 
     /* Maintain Device Drivers */
-        xTaskCreate( _DRV_MEMORY_0_Tasks,
+        (void)xTaskCreate( lDRV_MEMORY_0_Tasks,
         "DRV_MEM_0_TASKS",
         DRV_MEMORY_STACK_SIZE_IDX0,
         (void*)NULL,
@@ -266,7 +220,7 @@ void SYS_Tasks ( void )
         (TaskHandle_t*)NULL
     );
 
-        xTaskCreate( _WDRV_PIC32MZW1_Tasks,
+    xTaskCreate( _WDRV_PIC32MZW1_Tasks,
         "WDRV_PIC32MZW1_Tasks",
         1024,
         (void*)NULL,
@@ -279,6 +233,16 @@ void SYS_Tasks ( void )
 
     /* Maintain Middleware & Other Libraries */
     
+    xTaskCreate( _NET_PRES_Tasks,
+        "NET_PRES_Tasks",
+        NET_PRES_RTOS_STACK_SIZE,
+        (void*)NULL,
+        NET_PRES_RTOS_TASK_PRIORITY,
+        (TaskHandle_t*)NULL
+    );
+
+
+
     xTaskCreate( _DRV_BA414E_Tasks,
         "DRV_BA414E_Tasks",
         DRV_BA414E_RTOS_STACK_SIZE,
@@ -288,9 +252,8 @@ void SYS_Tasks ( void )
     );
 
 
-
     /* Create OS Thread for USB_DEVICE_Tasks. */
-    xTaskCreate( _USB_DEVICE_Tasks,
+    (void) xTaskCreate( F_USB_DEVICE_Tasks,
         "USB_DEVICE_TASKS",
         1024,
         (void*)NULL,
@@ -308,24 +271,6 @@ void SYS_Tasks ( void )
         (TaskHandle_t*)NULL
     );
 
-    xTaskCreate( _TCPIP_STACK_Task,
-        "TCPIP_STACK_Tasks",
-        TCPIP_RTOS_STACK_SIZE,
-        (void*)NULL,
-        TCPIP_RTOS_PRIORITY,
-        (TaskHandle_t*)NULL
-    );
-
-
-
-    xTaskCreate( _NET_PRES_Tasks,
-        "NET_PRES_Tasks",
-        NET_PRES_RTOS_STACK_SIZE,
-        (void*)NULL,
-        NET_PRES_RTOS_TASK_PRIORITY,
-        (TaskHandle_t*)NULL
-    );
-
 
     xTaskCreate( _SYS_WIFI_Task,
         "SYS_WIFI_Tasks",
@@ -340,27 +285,15 @@ void SYS_Tasks ( void )
 
     /* Maintain the application's state machine. */
         /* Create OS Thread for APP_PIC32MZW1_Tasks. */
-    xTaskCreate((TaskFunction_t) _APP_PIC32MZW1_Tasks,
+    (void) xTaskCreate((TaskFunction_t) lAPP_PIC32MZW1_Tasks,
                 "APP_PIC32MZW1_Tasks",
                 1024,
                 NULL,
                 1,
                 &xAPP_PIC32MZW1_Tasks);
 
-    /* Create OS Thread for APP_USB_MSD_Tasks. */
-    xTaskCreate((TaskFunction_t) _APP_USB_MSD_Tasks,
-                "APP_USB_MSD_Tasks",
-                1024,
-                NULL,
-                1,
-                &xAPP_USB_MSD_Tasks);
 
-    xTaskCreate((TaskFunction_t) _MICROPYTHON_Tasks,
-                "_MICROPYTHON_Tasks",
-                1024,
-                NULL,
-                1,
-                (TaskHandle_t*)NULL);
+
 
     /* Start RTOS Scheduler. */
     

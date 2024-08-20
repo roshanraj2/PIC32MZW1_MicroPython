@@ -64,7 +64,6 @@
 // Section: Data Types
 // *****************************************************************************
 // *****************************************************************************
-
 /* SST26 PLIB API Set
 
   Summary:
@@ -79,17 +78,19 @@
     None.
 */
 
-typedef void (* DRV_SST26_PLIB_CALLBACK)( uintptr_t );
+typedef void (* DRV_SST26_PLIB_CALLBACK)( uintptr_t context );
 
-typedef bool (* DRV_SST26_PLIB_WRITE_READ)(void*, size_t, void *, size_t);
+typedef bool (* DRV_SST26_PLIB_WRITE_READ)(void* pTransmitData, size_t txSize, void *pReceiveData, size_t rxSize);
 
-typedef bool (* DRV_SST26_PLIB_WRITE)(void*, size_t);
+typedef bool (* DRV_SST26_PLIB_WRITE)(void* pTransmitData, size_t txSize);
 
-typedef bool (* DRV_SST26_PLIB_READ)(void*, size_t);
+typedef bool (* DRV_SST26_PLIB_READ)(void* pReceiveData, size_t rxSize);
 
 typedef bool (* DRV_SST26_PLIB_IS_BUSY)(void);
 
-typedef void (* DRV_SST26_PLIB_CALLBACK_REGISTER)(DRV_SST26_PLIB_CALLBACK, uintptr_t);
+typedef bool (*DRV_SST26_PLIB_IS_TX_BUSY) (void);
+
+typedef void (* DRV_SST26_PLIB_CALLBACK_REGISTER)(DRV_SST26_PLIB_CALLBACK callback, uintptr_t context);
 
 
 typedef struct
@@ -98,13 +99,15 @@ typedef struct
     DRV_SST26_PLIB_WRITE_READ                writeRead;
 
     /* SST26 PLIB write API */
-    DRV_SST26_PLIB_WRITE                     write;
+    DRV_SST26_PLIB_WRITE                     write_t;
 
     /* SST26 PLIB read API */
-    DRV_SST26_PLIB_READ                      read;
+    DRV_SST26_PLIB_READ                      read_t;
 
     /* SST26 PLIB Transfer status API */
     DRV_SST26_PLIB_IS_BUSY                   isBusy;
+
+    DRV_SST26_PLIB_IS_TX_BUSY                isTransmitterBusy;
 
     /* SST26 PLIB callback register API */
     DRV_SST26_PLIB_CALLBACK_REGISTER         callbackRegister;
@@ -121,7 +124,9 @@ typedef struct
 
     /* Chip Select pin to be used */
     SYS_PORT_PIN chipSelectPin;
+
 } DRV_SST26_INIT;
+
 
 
 //DOM-IGNORE-BEGIN

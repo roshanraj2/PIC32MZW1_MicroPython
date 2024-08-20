@@ -51,9 +51,10 @@
 
 #include "device.h"
 #include "plib_tmr4.h"
+#include "interrupts.h"
 
 
-static TMR_TIMER_OBJECT tmr4Obj;
+volatile static TMR_TIMER_OBJECT tmr4Obj;
 
 
 void TMR4_Initialize(void)
@@ -114,7 +115,7 @@ uint32_t TMR4_FrequencyGet(void)
 }
 
 
-void TIMER_5_InterruptHandler (void)
+void __attribute__((used)) TIMER_5_InterruptHandler (void)
 {
     uint32_t status  = 0U;
     status = IFS0bits.T5IF;
@@ -122,7 +123,8 @@ void TIMER_5_InterruptHandler (void)
 
     if((tmr4Obj.callback_fn != NULL))
     {
-        tmr4Obj.callback_fn(status, tmr4Obj.context);
+        uintptr_t context = tmr4Obj.context;
+        tmr4Obj.callback_fn(status, context);
     }
 }
 

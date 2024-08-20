@@ -50,11 +50,41 @@
 #include <stdint.h>
 
 
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Handler Routines
 // *****************************************************************************
 // *****************************************************************************
+
+void CORE_TIMER_InterruptHandler( void );
+void EXTERNAL_0_InterruptHandler( void );
+void EXTERNAL_1_InterruptHandler( void );
+void EXTERNAL_2_InterruptHandler( void );
+void TIMER_3_InterruptHandler( void );
+void EXTERNAL_3_InterruptHandler( void );
+void EXTERNAL_4_InterruptHandler( void );
+void TIMER_5_InterruptHandler( void );
+void NVM_InterruptHandler( void );
+void DRV_USBFS_USB_Handler( void );
+void SPI1_RX_InterruptHandler( void );
+void SPI1_TX_InterruptHandler( void );
+void UART1_FAULT_InterruptHandler( void );
+void UART1_RX_InterruptHandler( void );
+void UART1_TX_InterruptHandler( void );
+void I2C1_BUS_InterruptHandler( void );
+void I2C1_MASTER_InterruptHandler( void );
+void SPI2_RX_InterruptHandler( void );
+void SPI2_TX_InterruptHandler( void );
+void UART2_FAULT_InterruptHandler( void );
+void UART2_RX_InterruptHandler( void );
+void UART2_TX_InterruptHandler( void );
+void TIMER_7_InterruptHandler( void );
+void WDRV_PIC32MZW_TasksRFSMCISR( void );
+void WDRV_PIC32MZW_TasksRFMACISR( void );
+void WDRV_PIC32MZW_TasksRFTimer0ISR( void );
+void DRV_BA414E_InterruptHandler( void );
+void DRV_BA414E_ErrorInterruptHandler( void );
 
 
 

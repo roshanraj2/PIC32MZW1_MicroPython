@@ -41,8 +41,8 @@
 *******************************************************************************/
 //DOM-IGNORE-END
 
-#ifndef _DRV_SST26_H
-#define _DRV_SST26_H
+#ifndef DRV_SST26_H
+#define DRV_SST26_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -160,15 +160,17 @@ typedef struct
         switch(event)
         {
             case DRV_SST26_TRANSFER_COMPLETED:
-
-                // Handle the transfer complete event.
+            {
+               
                 break;
+            }
 
             case DRV_SST26_TRANSFER_ERROR_UNKNOWN:
             default:
-
-                // Handle error.
+            {
+                
                 break;
+            }
         }
     }
     </code>
@@ -192,7 +194,7 @@ typedef struct
     intensive or blocking operations with in this function.
 */
 
-typedef void ( *DRV_SST26_EVENT_HANDLER )( DRV_SST26_TRANSFER_STATUS event, uintptr_t context );
+typedef void (*DRV_SST26_EVENT_HANDLER) ( DRV_SST26_TRANSFER_STATUS event, uintptr_t context );
 
 // *****************************************************************************
 /* Function:
@@ -222,9 +224,7 @@ typedef void ( *DRV_SST26_EVENT_HANDLER )( DRV_SST26_TRANSFER_STATUS event, uint
     Otherwise it returns SYS_MODULE_OBJ_INVALID.
 
   Example:
-    <code>
-    // This code snippet shows an example of initializing the SST26 Driver
-    // with SST26 QSPI flash device attached.
+    <code>    
 
     SYS_MODULE_OBJ  objectHandle;
 
@@ -245,7 +245,7 @@ typedef void ( *DRV_SST26_EVENT_HANDLER )( DRV_SST26_TRANSFER_STATUS event, uint
 
     if (SYS_MODULE_OBJ_INVALID == objectHandle)
     {
-        // Handle error
+       
     }
     </code>
 
@@ -308,7 +308,7 @@ SYS_MODULE_OBJ DRV_SST26_Initialize
     handle = DRV_SST26_Open(DRV_SST26_INDEX);
     if (DRV_HANDLE_INVALID == handle)
     {
-        // Unable to open the driver
+      
     }
     </code>
 
@@ -343,7 +343,7 @@ DRV_HANDLE DRV_SST26_Open( const SYS_MODULE_INDEX drvIndex, const DRV_IO_INTENT 
 
   Example:
     <code>
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle; 
 
     DRV_SST26_Close(handle);
     </code>
@@ -389,6 +389,11 @@ void DRV_SST26_Close( const DRV_HANDLE handle );
     SYS_STATUS          Status;
 
     Status = DRV_SST26_Status(DRV_SST26_INDEX);
+
+    if (status == SYS_STATUS_READY)
+    {
+        
+    }
     </code>
 
   Remarks:
@@ -408,8 +413,6 @@ SYS_STATUS DRV_SST26_Status( const SYS_MODULE_INDEX drvIndex );
     This function schedules a blocking operation for unlocking the flash blocks
     globally. This allows to perform erase and program operations on the flash.
 
-    The request is sent in QUAD_MODE to flash device.
-
   Precondition:
     The DRV_SST26_Open() routine must have been called for the
     specified SST26 driver instance.
@@ -419,20 +422,20 @@ SYS_STATUS DRV_SST26_Status( const SYS_MODULE_INDEX drvIndex );
                    open routine
 
   Returns:
-    false
-    - if Write enable fails before sending unlock command to flash
-    - if Unlock flash command itself fails
-
     true
-    - if the unlock is successfully completed
+        - if the unlock is successfully completed
+
+    false
+        - if Write enable fails before sending unlock command to flash and 
+        - if Unlock flash command itself fails
 
   Example:
     <code>
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle;  
 
-    if(true != DRV_SST26_UnlockFlash(handle))
+    if(DRV_SST26_UnlockFlash(handle) == false)
     {
-        // Error handling here
+        
     }
 
     </code>
@@ -454,8 +457,6 @@ bool DRV_SST26_UnlockFlash( const DRV_HANDLE handle );
     This function schedules a blocking operation for reading the JEDEC-ID.
     This information can be used to get the flash device geometry.
 
-    The request is sent in QUAD_MODE to flash device.
-
   Precondition:
     The DRV_SST26_Open() routine must have been called for the
     specified SST26 driver instance.
@@ -465,21 +466,19 @@ bool DRV_SST26_UnlockFlash( const DRV_HANDLE handle );
                    open routine
 
   Returns:
-    false
-    - if read jedec-id command fails
+    true  - if the read is successfully completed
 
-    true
-    - if the read is successfully completed
+    false - if read jedec-id command fails
 
   Example:
     <code>
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle;  
     uint32_t jedec_id = 0;
 
-    if(true != DRV_SST26_ReadJedecId(handle, &jedec_id))
+    if(DRV_SST26_ReadJedecId(handle, &jedec_id) == false)
     {
-        // Error handling here
+        
     }
 
     </code>
@@ -504,8 +503,6 @@ bool DRV_SST26_ReadJedecId( const DRV_HANDLE handle, void *jedec_id );
     The requesting client should call DRV_SST26_TransferStatusGet() API to know
     the current status of the request.
 
-    The request is sent in QUAD_MODE to flash device.
-
   Preconditions:
     The DRV_SST26_Open() routine must have been called for the
     specified SST26 driver instance.
@@ -517,25 +514,24 @@ bool DRV_SST26_ReadJedecId( const DRV_HANDLE handle, void *jedec_id );
     address       - block start address from where a sector needs to be erased.
 
   Returns:
-    false
-    - if Write enable fails before sending sector erase command to flash
-    - if sector erase command itself fails
-
     true
-    - if the erase request is successfully sent to the flash
+        - if the erase request is successfully sent to the flash
+
+    false
+        - if Write enable fails before sending sector erase command to flash
+        - if sector erase command itself fails
 
   Example:
     <code>
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle;  
     uint32_t sectorStart = 0;
 
-    if(false == DRV_SST26_SectorErase(handle, sectorStart))
+    if(DRV_SST26_SectorErase(handle, sectorStart) == false)
     {
-        // Error handling here
+        
     }
-
-    // Wait for erase to be completed
+   
     while(DRV_SST26_TRANSFER_BUSY == DRV_SST26_TransferStatusGet(handle));
 
     </code>
@@ -560,8 +556,6 @@ bool DRV_SST26_SectorErase( const DRV_HANDLE handle, uint32_t address );
     The requesting client should call DRV_SST26_TransferStatusGet() API to know
     the current status of the request.
 
-    The request is sent in QUAD_MODE to flash device.
-
   Preconditions:
     The DRV_SST26_Open() routine must have been called for the
     specified SST26 driver instance.
@@ -573,26 +567,25 @@ bool DRV_SST26_SectorErase( const DRV_HANDLE handle, uint32_t address );
     address       - block start address to be erased.
 
   Returns:
-    false
-    - if Write enable fails before sending sector erase command to flash
-    - if block erase command itself fails
-
     true
-    - if the erase request is successfully sent to the flash
+        - if the erase request is successfully sent to the flash
+
+    false
+        - if Write enable fails before sending sector erase command to flash
+        - if block erase command itself fails
 
   Example:
     <code>
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle;  
     uint32_t blockStart = 0;
 
-    if(false == DRV_SST26_SectorErase(handle, blockStart))
+    if(DRV_SST26_SectorErase(handle, blockStart) == false)
     {
-        // Error handling here
+        
     }
-
-    // Wait for erase to be completed
-    while(DRV_SST26_TRANSFER_BUSY == DRV_SST26_TransferStatusGet(handle));
+   
+    while(DRV_SST26_TransferStatusGet(handle) == DRV_SST26_TRANSFER_BUSY);
 
     </code>
 
@@ -615,8 +608,6 @@ bool DRV_SST26_BulkErase( const DRV_HANDLE handle, uint32_t address );
     The requesting client should call DRV_SST26_TransferStatusGet() API to know
     the current status of the request.
 
-    The request is sent in QUAD_MODE to flash device.
-
   Preconditions:
     The DRV_SST26_Open() routine must have been called for the
     specified SST26 driver instance.
@@ -626,25 +617,24 @@ bool DRV_SST26_BulkErase( const DRV_HANDLE handle, uint32_t address );
                     open routine
 
   Returns:
-    false
-    - if Write enable fails before sending sector erase command to flash
-    - if chip erase command itself fails
-
     true
-    - if the erase request is successfully sent to the flash
+        - if the erase request is successfully sent to the flash
+
+    false
+        - if Write enable fails before sending sector erase command to flash
+        - if chip erase command itself fails
 
   Example:
     <code>
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle; 
 
-    if(false == DRV_SST26_ChipErase(handle))
+    if(DRV_SST26_ChipErase(handle) == flase)
     {
-        // Error handling here
+        
     }
-
-    // Wait for erase to be completed
-    while(DRV_SST26_TRANSFER_BUSY == DRV_SST26_TransferStatusGet(handle));
+   
+    while(DRV_SST26_TransferStatusGet(handle) == DRV_SST26_TRANSFER_BUSY);
 
     </code>
 
@@ -665,8 +655,6 @@ bool DRV_SST26_ChipErase( const DRV_HANDLE handle );
     This function schedules a blocking operation for reading requested
     number of data bytes from the flash memory.
 
-    The request is sent in QUAD_MODE to flash device.
-
   Precondition:
     The DRV_SST26_Open() routine must have been called for the
     specified SST26 driver instance.
@@ -684,11 +672,9 @@ bool DRV_SST26_ChipErase( const DRV_HANDLE handle );
                       read.
 
   Returns:
-    false
-    - if read command itself fails
+    true - if number of bytes requested are read from flash memory
 
-    true
-    - if number of bytes requested are read from flash memory
+    false - if read command itself fails
 
   Example:
     <code>
@@ -696,13 +682,15 @@ bool DRV_SST26_ChipErase( const DRV_HANDLE handle );
     #define BUFFER_SIZE  1024
     #define MEM_ADDRESS  0x0
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
-    uint8_t readBuffer[BUFFER_SIZE];
+    DRV_HANDLE handle;  
+    uint8_t CACHE_ALIGN readBuffer[BUFFER_SIZE];
 
-    if (true != DRV_SST26_Read(handle, (void *)&readBuffer, BUFFER_SIZE, MEM_ADDRESS))
+    if (DRV_SST26_Read(handle, (void *)&readBuffer, BUFFER_SIZE, MEM_ADDRESS) == false)
     {
-        // Error handling here
+        
     }
+   
+    while(DRV_SST26_TransferStatusGet(handle) == DRV_SST26_TRANSFER_BUSY);
 
     </code>
 
@@ -725,8 +713,6 @@ bool DRV_SST26_Read( const DRV_HANDLE handle, void *rx_data, uint32_t rx_data_le
 
     The requesting client should call DRV_SST26_TransferStatusGet() API to know
     the current status of the request.
-
-    The request is sent in QUAD_MODE to flash device.
 
   Preconditions:
     The DRV_SST26_Open() routine must have been called for the
@@ -751,12 +737,12 @@ bool DRV_SST26_Read( const DRV_HANDLE handle, void *rx_data, uint32_t rx_data_le
                       written
 
   Returns:
-    false
-    - if Write enable fails before sending sector erase command to flash
-    - if write command itself fails
-
     true
-    - if the write request is successfully sent to the flash
+        - if the write request is successfully sent to the flash
+
+    false
+        - if Write enable fails before sending sector erase command to flash
+        - if write command itself fails
 
   Example:
     <code>
@@ -765,34 +751,33 @@ bool DRV_SST26_Read( const DRV_HANDLE handle, void *rx_data, uint32_t rx_data_le
     #define BUFFER_SIZE  1024
     #define MEM_ADDRESS  0x0
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
-    uint8_t writeBuffer[BUFFER_SIZE];
+    DRV_HANDLE handle;  
+    uint8_t CACHE_ALIGN writeBuffer[BUFFER_SIZE];
     bool status = false;
 
     if(false == DRV_SST26_SectorErase(handle))
     {
-        // Error handling here
+        
     }
-
-    // Wait for erase to be completed
-    while(DRV_SST26_TRANSFER_BUSY == DRV_SST26_TransferStatusGet(handle));
+   
+    while(DRV_SST26_TransferStatusGet(handle) == DRV_SST26_TRANSFER_BUSY);
 
     for (uint32_t j = 0; j < BUFFER_SIZE; j += PAGE_SIZE)
     {
-        if (true != DRV_SST26_PageWrite(handle, (void *)&writeBuffer[j], (MEM_ADDRESS + j)))
+        if (DRV_SST26_PageWrite(handle, (void *)&writeBuffer[j], (MEM_ADDRESS + j)) == false)
         {
             status = false;
             break;
         }
 
-        // Wait for write to be completed
-        while(DRV_SST26_TRANSFER_BUSY == DRV_SST26_TransferStatusGet(handle));
+        
+        while(DRV_SST26_TransferStatusGet(handle) == DRV_SST26_TRANSFER_BUSY);
         status = true;
     }
 
     if(status == false)
     {
-        // Error handling here
+        
     }
 
     </code>
@@ -824,23 +809,20 @@ bool DRV_SST26_PageWrite( const DRV_HANDLE handle, void *tx_data, uint32_t addre
                       open routine
 
   Returns:
-    DRV_SST26_TRANSFER_ERROR_UNKNOWN
-    - If the flash status register read request fails
+    DRV_SST26_TRANSFER_ERROR_UNKNOWN - If the flash status register read request fails
 
-    DRV_SST26_TRANSFER_BUSY
-    - If the current transfer request is still being processed
+    DRV_SST26_TRANSFER_BUSY - If the current transfer request is still being processed
 
-    DRV_SST26_TRANSFER_COMPLETED
-    - If the transfer request is completed
+    DRV_SST26_TRANSFER_COMPLETED - If the transfer request is completed
 
   Example:
     <code>
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle; 
 
-    if (DRV_SST26_TRANSFER_COMPLETED == DRV_SST26_TransferStatusGet(handle))
+    if (DRV_SST26_TransferStatusGet(handle) == DRV_SST26_TRANSFER_COMPLETED)
     {
-        // Operation Done
+       
     }
     </code>
 
@@ -873,17 +855,17 @@ DRV_SST26_TRANSFER_STATUS DRV_SST26_TransferStatusGet( const DRV_HANDLE handle )
     *geometry_table   - pointer to flash device geometry table instance
 
   Returns:
-    false
-    - if read device id fails
+    true  - if able to get the geometry details of the flash
 
-    true
-    - if able to get the geometry details of the flash
+    false - if read device id fails
 
   Example:
     <code>
 
-    DRV_HANDLE handle;  // Returned from DRV_SST26_Open
+    DRV_HANDLE handle;  
+
     DRV_SST26_GEOMETRY sst26FlashGeometry;
+
     uint32_t readBlockSize, writeBlockSize, eraseBlockSize;
     uint32_t nReadBlocks, nReadRegions, totalFlashSize;
 
@@ -901,7 +883,7 @@ DRV_SST26_TRANSFER_STATUS DRV_SST26_TransferStatusGet( const DRV_HANDLE handle )
     </code>
 
   Remarks:
-    This API is more useful when used to interface with block driver.
+    This API is more useful when used to interface with Memory driver.
 */
 
 bool DRV_SST26_GeometryGet( const DRV_HANDLE handle, DRV_SST26_GEOMETRY *geometry );
@@ -954,50 +936,52 @@ bool DRV_SST26_GeometryGet( const DRV_HANDLE handle, DRV_SST26_GEOMETRY *geometr
     #define BUFFER_SIZE  256
     #define MEM_ADDRESS  0x00
 
-    // myAppObj is an application specific state data object.
+    
     MY_APP_OBJ myAppObj;
 
-    uint8_t myBuffer[BUFFER_SIZE];
+    uint8_t CACHE_ALIGN myBuffer[BUFFER_SIZE];
 
-    // myHandle is the handle returned from DRV_SST26_Open API.
-
-    // Client registers an event handler with driver. This is done once
-
-    DRV_SST26_EventHandlerSet( myHandle, APP_SST26TransferEventHandler, (uintptr_t)&myAppObj );
-
-    if (DRV_SST26_Read(myHandle, myBuffer, BUFFER_SIZE, MEM_ADDRESS) == false)
-    {
-        // Error handling here
-    }
-
-    // The registered event handler is called when the request is complete.
-
+    
     void APP_SST26TransferEventHandler(DRV_SST26_TRANSFER_STATUS event, uintptr_t context)
     {
-        // The context handle was set to an application specific
-        // object. It is now retrievable easily in the event handler.
+       
         MY_APP_OBJ* pMyAppObj = (MY_APP_OBJ *) context;
 
         switch(event)
         {
             case DRV_SST26_TRANSFER_COMPLETED:
-                // This means the data was transferred.
+            {
+             
                 break;
+            }
 
             case DRV_SST26_TRANSFER_ERROR:
-                // Error handling here.
+            {
+              
                 break;
+            }
 
             default:
+            {
                 break;
+            }
         }
+    }   
+
+    DRV_SST26_EventHandlerSet( myHandle, APP_SST26TransferEventHandler, (uintptr_t)&myAppObj );
+
+    if (DRV_SST26_Read(myHandle, myBuffer, BUFFER_SIZE, MEM_ADDRESS) == false)
+    {
+       
     }
+
     </code>
 
   Remarks:
     If the client does not want to be notified when the queued buffer transfer
     has completed, it does not need to register a callback.
 */
+/* MISRA C-2012 Rule 8.6 deviated:2 Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
 
 void DRV_SST26_EventHandlerSet(
     const DRV_HANDLE handle,
@@ -1005,11 +989,15 @@ void DRV_SST26_EventHandlerSet(
     const uintptr_t context
 );
 
+bool DRV_SST26_ReadStatus( const DRV_HANDLE handle, void *rx_data, uint32_t rx_data_length );
+
+/* MISRAC 2012 deviation block end */
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif // #ifndef _DRV_SST26_H
+#endif // #ifndef DRV_SST26_H
 /*******************************************************************************
  End of File
 */
